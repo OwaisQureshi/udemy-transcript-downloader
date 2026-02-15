@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 const dotenv = require('dotenv');
+const pageSize = 200;
 
 // Load environment variables
 dotenv.config();
@@ -165,7 +166,6 @@ async function main() {
 
     // Fetch course content
     console.log('Fetching course content...');
-    const pageSize = 200;
     const apiUrl = `https://www.udemy.com/api-2.0/courses/${courseId}/subscriber-curriculum-items/?page_size=${pageSize}&fields%5Blecture%5D=title,object_index,is_published,sort_order,created,asset,supplementary_assets,is_free&fields%5Bquiz%5D=title,object_index,is_published,sort_order,type&fields%5Bpractice%5D=title,object_index,is_published,sort_order&fields%5Bchapter%5D=title,object_index,is_published,sort_order&fields%5Basset%5D=title,filename,asset_type,status,time_estimation,is_external,transcript,captions&caching_intent=True`;
 
     let courseJson = null;
